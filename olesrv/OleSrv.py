@@ -412,13 +412,8 @@ class TerminalCom:
         return result
 
     def initCom(self, comPort, comSpeed=115200, timeout=60, bytesize=8, parity='N', stopbits=1):
-        self.ser_com_port = serial.Serial()
-        self.ser_com_port.baudrate = comSpeed
-        self.ser_com_port.port = comPort
-        self.ser_com_port.bytesize = bytesize
-        self.ser_com_port.parity = parity
-        self.ser_com_port.stopbits = stopbits
-        self.ser_com_port.timeout = None
+        self.ser_com_port = serial.Serial(baudrate = comSpeed, port = comPort, bytesize = bytesize, parity = parity,
+                                          stopbits = stopbits, timeout = None)
         self.error = False
         logging_report(f'INIT COM port {self.ser_com_port} ')
         return self.error
